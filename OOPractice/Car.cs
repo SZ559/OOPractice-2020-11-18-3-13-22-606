@@ -6,22 +6,12 @@ namespace OOPractice
         public Car(string name, double speed) : base(name, speed)
         {
         }
-
-        public string SpeedUp()
-        {
-            return $"{Name} Car: speed up {Speed} km/h";
-        }
     }
 
     public class Truck : Vehicle
     {
         public Truck(string name, double speed) : base(name, speed)
         {
-        }
-
-        public string SpeedUp()
-        {
-            return $"{Name} Truck: speed up {Speed} km/h";
         }
     }
 
@@ -35,5 +25,25 @@ namespace OOPractice
 
         public string Name { get; }
         public double Speed { get; }
+
+        public string SpeedUp()
+        {
+            return $"{Name}: speed up {Speed} km/h";
+        }
+    }
+
+    public class Driver
+    {
+        public Driver(Vehicle vehicle)
+        {
+            this.VehicleOwned = vehicle;
+        }
+
+        public Vehicle VehicleOwned { get; }
+
+        public string SpeedUp()
+        {
+            return VehicleOwned.SpeedUp();
+        }
     }
 }
