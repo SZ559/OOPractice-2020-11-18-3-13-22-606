@@ -11,7 +11,8 @@ namespace OOPracticeTest
             //given
             var expected = "Cool Car: speed up 30 km/h";
             //when
-            var car = new Car("Cool", 30);
+            var engine = new GasolineEngine();
+            var car = new Car("Cool Car", engine);
             var actual = car.SpeedUp();
             //then
             Assert.Equal(actual, expected);
@@ -23,19 +24,61 @@ namespace OOPracticeTest
             //given
             var expected = "Big Truck: speed up 10 km/h";
             //when
-            var truck = new Truck("Big", 10);
+            var truck = new Truck("Big Truck", 10);
             var actual = truck.SpeedUp();
             //then
             Assert.Equal(actual, expected);
         }
 
         [Fact]
-        public void Should_Drive_Mutiple_Type_Of_Vehicle_And_Show_Message_When_Speed_Up()
+        public void Should_Drive_Car_And_Show_Message_When_Speed_Up()
         {
             //given
             var expected = "Cool Car: speed up 30 km/h";
             //when
-            var vehicle = new Car("Cool Car", 30);
+            var engine = new GasolineEngine();
+            var vehicle = new Car("Cool Car", engine);
+            var driver = new Driver(vehicle);
+            var actual = driver.SpeedUp();
+            //then
+            Assert.Equal(actual, expected);
+        }
+
+        [Fact]
+        public void Should_Drive_Truck_And_Show_Message_When_Speed_Up()
+        {
+            //given
+            var expected = "Big Truck: speed up 10 km/h";
+            //when
+            var vehicle = new Truck("Big Truck", 10);
+            var driver = new Driver(vehicle);
+            var actual = driver.SpeedUp();
+            //then
+            Assert.Equal(actual, expected);
+        }
+
+        [Fact]
+        public void Should_Has_Gasoline_Enginee_And_Has_Speed_30()
+        {
+            //given
+            var expected = "Cool Car: speed up 30 km/h";
+            //when
+            var engine = new GasolineEngine();
+            var vehicle = new Car("Cool Car", engine);
+            var driver = new Driver(vehicle);
+            var actual = driver.SpeedUp();
+            //then
+            Assert.Equal(actual, expected);
+        }
+
+        [Fact]
+        public void Should_Has_Electric_Enginee_And_Has_Speed_25()
+        {
+            //given
+            var expected = "Cool Car: speed up 25 km/h";
+            //when
+            var engine = new ElectricEngine();
+            var vehicle = new Car("Cool Car", engine);
             var driver = new Driver(vehicle);
             var actual = driver.SpeedUp();
             //then
